@@ -1,86 +1,604 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>403 Forbidden - Access Denied</title>
+    <title>Orbital Skill Development Center - Fire & Safety Courses</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            card: '#1e293b',
+                            rose: '#e11d48',
+                            orange: '#f97316',
+                            fire: '#ef4444'
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        body {
-            background-color: #f0f2f5;
-            color: #333;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-        .error-container {
-            text-align: center;
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            max-width: 500px;
-            border-top: 5px solid #d9534f;
+        ::-webkit-scrollbar-track {
+            background: #0f172a; 
         }
-        h1 {
-            font-size: 72px;
-            margin: 0;
-            color: #d9534f;
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #e11d48, #f97316); 
+            border-radius: 4px;
         }
-        h2 {
-            font-size: 24px;
-            margin: 10px 0;
-            color: #2c3e50;
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ea580c; 
         }
-        p {
-            color: #6c757d;
-            font-size: 16px;
-            line-height: 1.6;
+
+        .glass-effect {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .icon {
-            font-size: 50px;
-            margin-bottom: 20px;
+
+        .text-gradient-fire {
+            background: linear-gradient(to right, #f97316, #e11d48, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .footer-text {
-            margin-top: 30px;
-            font-size: 12px;
-            color: #adb5bd;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
+
+        .card-hover-effect {
+            transition: all 0.3s ease;
         }
-        .btn-home {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 25px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-        .btn-home:hover {
-            background-color: #0056b3;
+        .card-hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(249, 115, 22, 0.3);
+            border-color: rgba(249, 115, 22, 0.5);
         }
     </style>
 </head>
-<body>
+<body class="bg-brand-dark text-slate-200 antialiased overflow-x-hidden selection:bg-rose-500 selection:text-white">
 
-<div class="error-container">
-    <div class="icon">🚫</div>
-    <h1>403</h1>
-    <h2>Access Denied</h2>
-    <p>You do not have permission to view this directory or page. <br> 
-       Unauthorized access attempts are logged.</p>
-    
-    <a href="https://orbital-skills.github.io/osi.com/" class="btn-home">Go Back to Home</a>
-
-    <div class="footer-text">
-        Server: GitHub/Orbital-Skills-Secure-Gateway <br>
-        Client IP: User-Restricted
+    <!-- Background Ambience -->
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-rose-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute top-0 right-1/4 w-96 h-96 bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-red-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
     </div>
-</div>
 
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-rose-500 to-orange-500 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-rose-500/20">
+                        <i class="fa-solid fa-fire"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-xl tracking-tight text-white leading-none">Orbital</h1>
+                        <span class="text-xs text-slate-400 font-medium tracking-wide">Skill Development Center</span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="login.html" class="text-white font-medium hover:text-orange-400 transition">Home</a>
+                        <a href="#courses" class="text-slate-300 hover:text-orange-400 transition">Courses</a>
+                       <a href="https://wa.me/message/NP5YOJV63ILWD1" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-rose-600 to-orange-500 text-white font-semibold shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transition transform hover:scale-105">Contact Us</a>
+  <a href="https://orbital-skills.github.io/osi.com/Prospects.pdf" class="bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-slate-800 transition shadow-md">Prospectus</a>
+                    </div>
+      </div>
+                <!-- Mobile Menu Button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-white/10 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative z-10 pt-32 pb-20 lg:pt-48 lg:pb-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-sm font-semibold mb-6 animate-fade-in-up">
+                <i class="fa-solid fa-shield-halved mr-2"></i> ISO Certified Training
+            </span>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 animate-fade-in-up" style="animation-delay: 0.1s;">
+                Master the Art of <br>
+                <span class="text-gradient-fire">Fire & Safety</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-400 mb-10 animate-fade-in-up" style="animation-delay: 0.2s;">
+                Secure your future with our industry-leading courses. Expert training in Industrial Safety, Fire Fighting, and Disaster Management.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.3s;">
+                <a href="#courses" class="px-8 py-4 rounded-full bg-white text-brand-dark font-bold text-lg hover:bg-gray-100 transition shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                    Browse Courses
+                </a>
+                <a href="https://orbital-skills.github.io/osi.com/Prospects.pdf"
+       target="_blank"
+       class="px-8 py-4 rounded-full border border-slate-600
+       hover:border-orange-500 hover:text-orange-400
+       text-slate-300 font-bold text-lg transition
+       bg-brand-card/50 backdrop-blur-sm">
+        Download Prospectus
+    </a>
+            </div>
+
+            <!-- Stats -->
+            <div class="mt-20 grid grid-cols-2 gap-8 md:grid-cols-4 border-t border-white/10 pt-10 animate-fade-in-up" style="animation-delay: 0.4s;">
+                <div>
+                    <div class="text-3xl font-bold text-white">12+</div>
+                    <div class="text-sm text-slate-500 mt-1">Professional Courses</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-white">100%</div>
+                    <div class="text-sm text-slate-500 mt-1">Placement Assist</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-white">500+</div>
+                    <div class="text-sm text-slate-500 mt-1">Students Trained</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-white">ISO</div>
+                    <div class="text-sm text-slate-500 mt-1">Certified Center</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Section -->
+    <section id="courses" class="relative z-10 py-20 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Our Programs</h2>
+                    <div class="h-1 w-20 bg-gradient-to-r from-rose-500 to-orange-500 rounded-full"></div>
+                </div>
+                
+                <!-- Search Filter -->
+                <div class="relative w-full md:w-96 group">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fa-solid fa-magnifying-glass text-slate-500 group-focus-within:text-orange-500 transition-colors"></i>
+                    </div>
+                    <input type="text" id="searchInput" placeholder="Search for courses, codes..." 
+                        class="block w-full pl-10 pr-3 py-3 border border-slate-700 rounded-xl leading-5 bg-slate-800 text-slate-300 placeholder-slate-500 focus:outline-none focus:bg-slate-900 focus:ring-1 focus:ring-orange-500 focus:border-orange-500 sm:text-sm transition shadow-lg">
+                </div>
+            </div>
+
+            <!-- Course Grid -->
+            <div id="courseGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                <!-- Courses will be injected here via JS -->
+            </div>
+            
+            <!-- No Results State -->
+            <div id="noResults" class="hidden text-center py-20">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-slate-800 mb-4">
+                    <i class="fa-solid fa-file-circle-xmark text-2xl text-slate-500"></i>
+                </div>
+                <h3 class="text-xl font-medium text-white">No courses found</h3>
+                <p class="text-slate-500 mt-2">Try adjusting your search terms.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-rose-900/40 to-orange-900/40 border border-white/10 rounded-3xl p-8 md:p-16 overflow-hidden relative">
+                <!-- Decoration -->
+                <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-orange-500 rounded-full mix-blend-overlay filter blur-3xl opacity-30"></div>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold text-white mb-6">Why Choose Orbital?</h2>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center text-rose-400 mt-1">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-semibold text-white">Industry Expert Trainers</h4>
+                                    <p class="text-slate-400 text-sm">Learn from veterans with real-world experience in fire safety.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400 mt-1">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-semibold text-white">Practical Training Grounds</h4>
+                                    <p class="text-slate-400 text-sm">Hands-on experience with modern fire-fighting equipment.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-400 mt-1">
+                                    <i class="fa-solid fa-briefcase"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-semibold text-white">Career Guidance</h4>
+                                    <p class="text-slate-400 text-sm">Resume building, interview preparation, and placement support.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="relative">
+                        <!-- Abstract representation of a certificate/badge -->
+                        <div class="aspect-video rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border border-white/10 flex items-center justify-center shadow-2xl">
+                             <div class="text-center">
+                                 <i class="fa-solid fa-certificate text-6xl text-gradient-fire mb-4 block"></i>
+                                 <span class="text-2xl font-bold text-white">GSDM Authorized<br>Training Center</span>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-slate-900 border-t border-white/5 pt-16 pb-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                         <div class="w-8 h-8 rounded bg-gradient-to-br from-rose-500 to-orange-500 flex items-center justify-center text-white text-sm">
+                            <i class="fa-solid fa-fire"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Orbital SDC</h3>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Dedicated to creating a safer world through comprehensive education in fire safety, industrial security, and environmental health.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/orbitalskills" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-rose-600 hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-rose-600 hover:text-white transition"><i class="fa-brands fa-twitter"></i></a>
+                       <a href="https://wa.me/message/NP5YOJV63ILWD1"
+   target="_blank"
+   class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-green-600 hover:text-white transition">
+   <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li><a href="login.html" class="hover:text-orange-400 transition">Home</a></li>
+                        <li><a href="#courses" class="hover:text-orange-400 transition">All Courses</a></li>
+                        <li><a href="https://wa.me/message/NP5YOJV63ILWD1" class="text-gray-700 hover:text-purple-600 transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-6">Contact Us</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-location-dot mt-1 mr-3 text-rose-500"></i>
+                            <span>Orbital Skill Development Center,<br>Bighar Road, Fatehabad Haryana.</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-phone mr-3 text-rose-500"></i>
+                            <span>+94167 11671</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-envelope mr-3 text-rose-500"></i>
+                            <span>osi@ftbh.onmicrosoft.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-slate-500 text-sm">© 2023 Orbital Skill Development Center. All rights reserved.</p>
+                <p class="text-slate-600 text-xs mt-2 md:mt-0">Designed for Excellence.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Course Data and Rendering Script -->
+    <script>
+        const courses = [
+            {
+                sector: "Fire & Safety",
+                name: "Occupational Safety Health & Environment Management System",
+                code: "OSHEMS",
+                duration: "1 Year",
+                eligibility: "12th",
+                fee: 15000
+            },
+            {
+                sector: "Fire & Safety",
+                name: "Fire Technology & Industrial Safety",
+                code: "FTIS",
+                duration: "1 Year",
+                eligibility: "12th",
+                fee: 15000
+            },
+            {
+                sector: "Fire & Safety",
+                name: "PG Course in Fire Technology & Industrial Safety",
+                code: "PGFTIS",
+                duration: "1 Year",
+                eligibility: "Graduation Any Stream",
+                fee: 15000
+            },
+            {
+                sector: "Fire & Safety",
+                name: "Industrial Safety",
+                code: "IS",
+                duration: "1 Year",
+                eligibility: "12th",
+                fee: 15000
+            },
+            {
+                sector: "Fire & Safety",
+                name: "Industrial Safety",
+                code: "CIS",
+                duration: "6 Month",
+                eligibility: "10th",
+                fee: 12000
+            },
+            {
+                sector: "Fire & Safety",
+                name: "Sub Fire Officer",
+                code: "SFO",
+                duration: "780 Hrs",
+                eligibility: "Graduation",
+                fee: 15000
+            },
+            {
+                sector: "Fire & Safety",
+                name: "First Aid Fire Fighting",
+                code: "FAFF",
+                duration: "3 Months",
+                eligibility: "10th",
+                fee: 10250
+            },
+            {
+                sector: "Fire & Safety",
+                name: "Fireman",
+                code: "CFM",
+                duration: "6 Months",
+                eligibility: "10th",
+                fee: 12000
+            },
+            {
+                sector: "Fire & Safety",
+                name: "Driver Cum Pump Operator",
+                code: "DCPO",
+                duration: "6 Months",
+                eligibility: "10th",
+                fee: 12000
+            },
+            {
+                sector: "Fire & Safety",
+                name: "Fire Safety & Security Management",
+                code: "CFSSM",
+                duration: "3 months",
+                eligibility: "10th",
+                fee: 10250
+            },
+            {
+                sector: "Fire & Safety",
+                name: "Health Sanitary Inspector",
+                code: "HSI",
+                duration: "780 hrs",
+                eligibility: "10th",
+                fee: 15000
+            },
+            {
+                sector: "Fire & Safety",
+                name: "ECCE",
+                code: "ECCE",
+                duration: "780 hrs",
+                eligibility: "12th",
+                fee: 9000
+            }
+        ];
+
+        const courseGrid = document.getElementById('courseGrid');
+        const searchInput = document.getElementById('searchInput');
+        const noResults = document.getElementById('noResults');
+
+        // Function to format currency
+        const formatCurrency = (value) => {
+            return new Intl.NumberFormat('en-IN', {
+                style: 'currency',
+                currency: 'INR',
+                maximumSignificantDigits: 3
+            }).format(value);
+        };
+
+        // Render Function
+        const renderCourses = (filterText = '') => {
+            courseGrid.innerHTML = '';
+            
+            const filteredCourses = courses.filter(course => 
+                course.name.toLowerCase().includes(filterText.toLowerCase()) || 
+                course.code.toLowerCase().includes(filterText.toLowerCase()) ||
+                course.eligibility.toLowerCase().includes(filterText.toLowerCase())
+            );
+
+            if (filteredCourses.length === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+                
+                filteredCourses.forEach((course, index) => {
+                    // Stagger animation delay
+                    const delay = index * 100;
+                    
+                    const card = document.createElement('div');
+                    card.className = `glass-effect rounded-2xl p-6 relative overflow-hidden group border-t-4 border-t-rose-500 card-hover-effect animate-fade-in-up`;
+                    card.style.animationDelay = `${delay}ms`;
+                    
+                    card.innerHTML = `
+                        <!-- Hover Gradient overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-rose-600/10 to-orange-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                        
+                        <div class="relative z-10 flex flex-col h-full justify-between">
+                            <div>
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700">
+                                        ${course.code}
+                                    </span>
+                                    <div class="flex items-center text-orange-400">
+                                        <i class="fa-regular fa-clock text-xs mr-1"></i>
+                                        <span class="text-xs font-medium">${course.duration}</span>
+                                    </div>
+                                </div>
+                                
+                                <h3 class="text-xl font-bold text-white mb-2 leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-rose-400 group-hover:to-orange-400 transition-colors">
+                                    ${course.name}
+                                </h3>
+                                
+                                <div class="w-full h-px bg-slate-700/50 my-4"></div>
+                                
+                                <div class="space-y-2 mb-6">
+                                    <div class="flex items-center text-slate-400 text-sm">
+                                        <i class="fa-solid fa-user-graduate w-6 text-rose-500"></i>
+                                        <span>Eligibility: <span class="text-slate-200">${course.eligibility}</span></span>
+                                    </div>
+                                    <div class="flex items-center text-slate-400 text-sm">
+                                        <i class="fa-solid fa-layer-group w-6 text-rose-500"></i>
+                                        <span>Sector: <span class="text-slate-200">${course.sector}</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-between items-center pt-2">
+                                <div>
+                                    <span class="text-xs text-slate-500 block">Course Fee</span>
+                                    <span class="text-2xl font-bold text-white">${formatCurrency(course.fee)}</span>
+                                </div>
+   <button
+onclick="openPaymentModal('${course.name}','${course.fee}')"
+class="w-10 h-10 rounded-full bg-gradient-to-r from-rose-600 to-orange-500 
+flex items-center justify-center text-white shadow-lg 
+hover:shadow-orange-500/40 transition transform group-hover:rotate-45">
+    <i class="fa-solid fa-indian-rupee-sign"></i>
+</button>
+                      </div>
+                        </div>
+                    `;
+                    courseGrid.appendChild(card);
+                });
+            }
+        };
+
+        // Initial Render
+        renderCourses();
+
+        // Search Listener
+        searchInput.addEventListener('input', (e) => {
+            renderCourses(e.target.value);
+        });
+
+function openPaymentModal(courseName, fee) {
+  document.getElementById('modalCourseName').innerText = courseName;
+  document.getElementById('modalCourseFee').innerText = '₹' + fee;
+
+  const upiId = "hmt2cu@okaxis";
+  const upiString = `upi://pay?pa=${upiId}&pn=Course Fee&am=${fee}&cu=INR`;
+
+  document.getElementById('upiQr').src =
+    "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" +
+    encodeURIComponent(upiString);
+
+  document.getElementById('paymentModal').classList.remove('hidden');
+}
+
+function closePaymentModal() {
+  document.getElementById('paymentModal').classList.add('hidden');
+}
+
+function sendWhatsApp() {
+  const phoneNumber = "919416711671";
+  const message = encodeURIComponent(
+    "नमस्ते, मैंने Fire & Safety Course Fee का payment कर दिया है। यह रहा स्क्रीनशॉट।"
+  );
+
+  window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+
+  closePaymentModal();
+
+  setTimeout(() => {
+    window.location.href = "login.html";
+  }, 800);
+}
+    </script>
+<!-- Payment Popup -->
+<div id="paymentModal" class="fixed inset-0 bg-black bg-opacity-60 hidden flex items-center justify-center z-50">
+  <div class="bg-white w-full max-w-md rounded-xl p-6 relative">
+
+    <button onclick="closePaymentModal()" class="absolute top-3 right-3 text-gray-500 text-xl">&times;</button>
+
+    <h2 class="text-xl font-bold text-center mb-2">Course Fee Payment</h2>
+
+    <p id="modalCourseName" class="text-center font-semibold text-gray-800"></p>
+    <p id="modalCourseFee" class="text-center text-lg font-bold text-indigo-700 mb-4"></p>
+
+    <div class="flex justify-center mb-3">
+      <img id="upiQr" class="w-48 h-48" alt="UPI QR Code">
+    </div>
+
+    <p class="text-center text-sm mb-3">
+      <strong>UPI ID:</strong> hmt2cu@okaxis
+    </p>
+
+    <a href="upi://pay?pa=hmt2cu@okaxis"
+       class="block w-full text-center bg-indigo-700 text-white py-2 rounded-lg mb-3">
+      Pay via UPI App (GPay / PhonePe)
+    </a>
+
+    <div class="bg-red-100 text-red-700 text-sm p-2 rounded mb-3 text-center">
+      नोट: पेमेंट के बाद स्क्रीनशॉट व्हाट्सएप पर भेजें।
+    </div>
+
+    <button onclick="sendWhatsApp()"
+      class="w-full bg-green-500 text-white py-2 rounded-lg">
+      WhatsApp Screenshot
+    </button>
+
+  </div>
+</div>
 </body>
 </html>
